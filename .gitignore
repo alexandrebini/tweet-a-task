@@ -3,6 +3,7 @@
 *.bowerrc
 *.rbc
 .DS_Store
+.env
 .rspec
 .rvmrc
 /.bundle
