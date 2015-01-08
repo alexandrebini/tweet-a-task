@@ -6,7 +6,7 @@ class Task < ActiveRecord::Base
   validates :phrase, presence: true
   validates :twitter_id, presence: true, uniqueness: true
 
-  scope :recent, -> { order('tasks.created_at DESC') }
+  scope :recent, -> { order('created_at DESC') }
 
   after_create :create_managers
 

@@ -13,6 +13,7 @@ class MentionWatcher
     Thread.new do
       @client.track(phrases) do |status, i|
         Task.create_from_tweet(status)
+        sleep 5
       end
     end
   end

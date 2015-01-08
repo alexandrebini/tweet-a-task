@@ -2,7 +2,7 @@ class Manager < ActiveRecord::Base
   belongs_to :task, inverse_of: :managers
   enum status: [:pending, :success, :error]
   validates :task, presence: true
-  scope :recent, -> { order('tasks.created_at DESC') }
+  scope :recent, -> { order('created_at DESC') }
   after_create :enqueue_publishing
 
   private
