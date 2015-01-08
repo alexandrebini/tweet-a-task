@@ -1,12 +1,12 @@
 !/log/.keep
 **.orig
-*.bowerrc
 *.rbc
 .DS_Store
 .env
 .rspec
 .rvmrc
 /.bundle
+/config/application.yml
 /coverage/
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -21,5 +21,3 @@ capybara-*.html
 config/initializers/secret_token.rb
 pickle-email-*.html
 rerun.txt
-# Ignore application configuration
-/config/application.yml

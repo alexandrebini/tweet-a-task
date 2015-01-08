@@ -14,7 +14,7 @@
     phrasesRegion: ->
       phrasesView = @getPhrasesView()
 
-      @listenTo phrasesView, 'childview:clicked', (child) =>
+      @listenTo phrasesView, 'childview:clicked', (child) ->
         App.vent.trigger 'visit:phrase', child.model.get('id')
 
       @layout.phraseListRegion.show phrasesView

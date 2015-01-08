@@ -15,7 +15,7 @@
     tasksRegion: ->
       tasksView = @getTasksView()
 
-      @listenTo tasksView, 'childview:clicked', (child) =>
+      @listenTo tasksView, 'childview:clicked', (child) ->
         App.vent.trigger 'visit:task', child.model.get('phrase_id'), child.model.get('id')
 
       @layout.taskListRegion.show tasksView
