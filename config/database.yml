@@ -13,5 +13,4 @@ test:
 
 production:
   <<: *default
-  database: tweet-a-task_production
-  password: <%= ENV['TWEET-A-TASK_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
