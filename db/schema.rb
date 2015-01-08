@@ -13,24 +13,35 @@
 
 ActiveRecord::Schema.define(version: 20150107235937) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "managers", force: :cascade do |t|
     t.string  "type"
     t.integer "task_id"
     t.integer "status",  default: 0
     t.string  "url"
-    t.text    "raw"
+    t.json    "raw"
   end
 
-  add_index "managers", ["status"], name: "index_managers_on_status"
-  add_index "managers", ["task_id", "type"], name: "index_managers_on_task_id_and_type"
-  add_index "managers", ["task_id"], name: "index_managers_on_task_id"
-  add_index "managers", ["type"], name: "index_managers_on_type"
+  add_index "managers", ["status"], name: "index_managers_on_status", using: :btree
+  add_index "managers", ["task_id", "type"], name: "index_managers_on_task_id_and_type", using: :btree
+  add_index "managers", ["task_id"], name: "index_managers_on_task_id", using: :btree
+  add_index "managers", ["type"], name: "index_managers_on_type", using: :btree
+
+  create_table "phrases", force: :cascade do |t|
+    t.string "text"
+  end
+
+  add_index "phrases", ["text"], name: "index_phrases_on_text", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "twitter_id"
+    t.integer "phrase_id"
+    t.string  "name"
+    t.string  "twitter_id"
   end
 
-  add_index "tasks", ["twitter_id"], name: "index_tasks_on_twitter_id", unique: true
+  add_index "tasks", ["phrase_id"], name: "index_tasks_on_phrase_id", using: :btree
+  add_index "tasks", ["twitter_id"], name: "index_tasks_on_twitter_id", unique: true, using: :btree
 
 end

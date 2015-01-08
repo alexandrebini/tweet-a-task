@@ -1,5 +1,6 @@
 class MentionWatcher
   include Singleton
+  attr_reader :client, :running
 
   def initialize
     @client = TweetStream::Client.new
@@ -10,14 +11,17 @@ class MentionWatcher
     return if phrases.size == 0
     @running = true
     Thread.new do
-      @client.track(phrases) do |status|
-        Task.from_twitter(status)
+      @client.track(phrases) do |status, i|
+        Task.create_from_tweet(status)
       end
     end
   end
 
   def stop
-    @client.stop if @running
+    if @running
+      @client.stop rescue nil
+      @running = false
+    end
   end
 
   def restart

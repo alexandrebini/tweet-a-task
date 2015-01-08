@@ -5,7 +5,7 @@ class CreateManagers < ActiveRecord::Migration
       t.references :task
       t.integer :status, default: 0
       t.string :url
-      t.text :raw
+      t.json :raw
     end
     add_index :managers, :task_id
     add_index :managers, :type

@@ -16,3 +16,18 @@ end
 guard :bundler do
   watch('Gemfile')
 end
+
+guard :migrate, run_on_start: true do
+  watch(%r{^db/migrate/(\d+).+\.rb})
+  watch('db/seeds.rb')
+end
+
+guard :livereload do
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{app/serializers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|sass|js|html|hamlc|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+end

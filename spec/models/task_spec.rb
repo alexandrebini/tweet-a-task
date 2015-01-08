@@ -15,4 +15,8 @@ describe Task do
     task = create(:task)
     build(:task, twitter_id: task.twitter_id).valid?.must_equal false
   end
+
+  it 'must belongs to a phrase' do
+    build(:task, phrase: nil).valid?.must_equal false
+  end
 end

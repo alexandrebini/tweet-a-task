@@ -1,12 +1,21 @@
 class Task < ActiveRecord::Base
+  belongs_to :phrase
+  has_many :managers, dependent: :destroy, inverse_of: :task
+
   validates :name, presence: true
+  validates :phrase, presence: true
   validates :twitter_id, presence: true, uniqueness: true
-  has_many :managers, dependent: :destroy
   after_create :create_managers
 
-  def self.from_twitter(status)
-    Task.new.tap do |task|
+  def self.create_from_tweet(status)
+    phrase = Phrase.find_by_tweet(status)
+
+    if phrase
+      task = phrase.tasks.where(twitter_id: status.id).first_or_initialize
       task.name = status.text
+      task.save
+    else
+      false
     end
   end
 

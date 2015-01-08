@@ -22,3 +22,4 @@ capybara-*.html
 config/initializers/secret_token.rb
 pickle-email-*.html
 rerun.txt
+vendor/assets/bower_components/

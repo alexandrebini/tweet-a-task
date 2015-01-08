@@ -1,18 +1,17 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: tweet-a-task_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: tweet-a-task_test
 
 production:
   <<: *default
-  adapter: postgresql
   database: tweet-a-task_production
   password: <%= ENV['TWEET-A-TASK_DATABASE_PASSWORD'] %>
