@@ -4,6 +4,7 @@ gem 'rails', '4.2.0'
 gem 'active_model_serializers', '0.9.2'
 gem 'bower-rails', '0.9.2'
 gem 'coffee-rails', '4.1.0'
+gem 'figaro', '1.0.0'
 gem 'haml-rails', '0.6.0'
 gem 'haml_coffee_assets', git: 'https://github.com/netzpirat/haml_coffee_assets'
 gem 'httparty', '0.13.3'
@@ -25,7 +26,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'dotenv-rails', '1.0.2'
   gem 'spring', '1.2.0'
   gem 'sqlite3', '1.3.10'
 end
