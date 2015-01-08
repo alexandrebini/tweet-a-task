@@ -15,7 +15,6 @@
 /public/system
 /spec/tmp
 /tmp
-/vendor/assets/bower_components
 /vendor/bundle
 bower.json
 capybara-*.html
