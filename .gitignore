@@ -1,12 +1,12 @@
 !/log/.keep
 **.orig
-*.bowerrc
 *.rbc
 .DS_Store
 .env
 .rspec
 .rvmrc
 /.bundle
+/config/application.yml
 /coverage/
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -15,11 +15,10 @@
 /public/system
 /spec/tmp
 /tmp
-/vendor/assets/bower_components
+/vendor/assets/bower_components/*
 /vendor/bundle
-bower.json
 capybara-*.html
 config/initializers/secret_token.rb
 pickle-email-*.html
 rerun.txt
-vendor/assets/bower_components/
+public/assets

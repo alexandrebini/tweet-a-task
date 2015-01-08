@@ -1,7 +1,5 @@
 default: &default
   adapter: postgresql
-  pool: 5
-  timeout: 5000
 
 development:
   <<: *default
@@ -13,5 +11,4 @@ test:
 
 production:
   <<: *default
-  database: tweet-a-task_production
-  password: <%= ENV['TWEET-A-TASK_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
