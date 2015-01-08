@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'active_model_serializers', '0.9.2'
-gem 'bower', '0.0.2'
 gem 'coffee-rails', '4.1.0'
 gem 'figaro', '1.0.0'
 gem 'haml-rails', '0.6.0'
@@ -16,7 +15,6 @@ gem 'unicorn', '4.8.3'
 group :production do
   gem 'pg', '0.18.1'
   gem 'rails_12factor', '0.0.3'
-  gem 'sprockets', '2.2.2.backport1'
 end
 
 group :development do
