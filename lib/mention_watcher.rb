@@ -7,10 +7,11 @@ class MentionWatcher
   end
 
   def start
+    return if phrases.size == 0
     @running = true
     Thread.new do
       @client.track(phrases) do |status|
-        puts "#{ status.text }"
+        Task.from_twitter(status)
       end
     end
   end
@@ -20,11 +21,11 @@ class MentionWatcher
   end
 
   def restart
-    stop!
-    start!
+    stop
+    start
   end
 
   def phrases
-    ['Brazil']
+    Phrase.pluck :text
   end
 end

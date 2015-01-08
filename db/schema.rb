@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107235835) do
+ActiveRecord::Schema.define(version: 20150107235937) do
+
+  create_table "managers", force: :cascade do |t|
+    t.string  "type"
+    t.integer "task_id"
+    t.integer "status",  default: 0
+    t.string  "url"
+    t.text    "raw"
+  end
+
+  add_index "managers", ["status"], name: "index_managers_on_status"
+  add_index "managers", ["task_id", "type"], name: "index_managers_on_task_id_and_type"
+  add_index "managers", ["task_id"], name: "index_managers_on_task_id"
+  add_index "managers", ["type"], name: "index_managers_on_type"
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"

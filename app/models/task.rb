@@ -1,16 +1,19 @@
 class Task < ActiveRecord::Base
   validates :name, presence: true
   validates :twitter_id, presence: true, uniqueness: true
+  has_many :managers, dependent: :destroy
+  after_create :create_managers
 
-  after_create :publish, :restart_mention_watcher
-
-  def publish
-    Integrations.all.each do |integration_class|
-      integration_class.new.create_task name
+  def self.from_twitter(status)
+    Task.new.tap do |task|
+      task.name = status.text
     end
   end
 
-  def restart_mention_watcher
-    MentionWatcher.instance.restart
+  private
+  def create_managers
+    Manager.descendants.each do |type|
+      self.managers.where(type: type).first_or_create
+    end
   end
 end
