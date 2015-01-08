@@ -16,6 +16,7 @@ gem 'unicorn', '4.8.3'
 group :production do
   gem 'pg', '0.18.1'
   gem 'rails_12factor', '0.0.3'
+  gem 'sprockets', '2.2.2.backport1'
 end
 
 group :development do
