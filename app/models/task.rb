@@ -5,6 +5,9 @@ class Task < ActiveRecord::Base
   validates :name, presence: true
   validates :phrase, presence: true
   validates :twitter_id, presence: true, uniqueness: true
+
+  scope :recent, -> { order('tasks.created_at DESC') }
+
   after_create :create_managers
 
   def self.create_from_tweet(status)
