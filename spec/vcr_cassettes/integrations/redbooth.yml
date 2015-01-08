@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://redbooth.com/api/3/tasks
+    body:
+      encoding: UTF-8
+      string: project_id=1345816&task_list_id=2732755&name=foo
+    headers:
+      Authorization:
+      - Bearer f0c56daaa33f7d51d4c1dc2370e97ee18349c74cf62c1735e0c5599d9483d463
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 08 Jan 2015 01:55:28 GMT
+      Etag:
+      - '"4953445b50593e05a8fd2de9b72dc1b4"'
+      Server:
+      - nginx
+      Status:
+      - 201 Created
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Request-Id:
+      - b9facec6ebe891fccdbc7d72269622a5
+      X-Runtime:
+      - '0.207251'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '673'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"type":"Task","created_at":1420682127,"updated_at":1420682127,"end_date":null,"last_due_date":null,"start_date":null,"frequency":"none","id":16259612,"name":"foo","task_list_id":2732755,"comments_count":0,"assigned_id":null,"is_private":false,"project_id":1345816,"urgent":false,"user_id":1015276,"position":0,"last_activity_id":null,"record_conversion_type":null,"record_conversion_id":null,"metadata":{},"subtasks_count":0,"resolved_subtasks_count":0,"watcher_ids":[1015276],"description":null,"description_html":"","description_updated_by_user_id":null,"description_updated_at":null,"updated_by_id":null,"deleted":false,"row_order":7602176,"status":"new","due_on":null}'
+    http_version: 
+  recorded_at: Thu, 08 Jan 2015 01:55:28 GMT
+recorded_with: VCR 2.9.3
