@@ -1,6 +1,6 @@
 module Managers
   class Redbooth < Manager
-    class API
+    class Api
       include HTTParty
       base_uri 'https://redbooth.com/api/3'
 
@@ -21,12 +21,23 @@ module Managers
     end
 
     def publish!
-      @api ||= API.new
-      if @api.create_task(task.name).code == '201'
-        success!
+      response = api.create_task(task.name)
+      if response.code.to_i == 201
+        self.raw = response.body.to_json
+        self.status = :success
       else
-        error!
+        p '-------------------------else'
+        p response.headers.to_json
+
+        self.raw = response.headers.to_json
+        self.status = :error
       end
+      self.save
+    end
+
+    private
+    def api
+      @api ||= Api.new
     end
   end
 end
