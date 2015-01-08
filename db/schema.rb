@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107235937) do
+ActiveRecord::Schema.define(version: 20150108223602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "managers", force: :cascade do |t|
-    t.string  "type"
-    t.integer "task_id"
-    t.integer "status",  default: 0
-    t.string  "url"
-    t.json    "raw"
+    t.string   "type"
+    t.integer  "task_id"
+    t.integer  "status",     default: 0
+    t.string   "url"
+    t.json     "raw"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "managers", ["status"], name: "index_managers_on_status", using: :btree
@@ -30,15 +32,19 @@ ActiveRecord::Schema.define(version: 20150107235937) do
   add_index "managers", ["type"], name: "index_managers_on_type", using: :btree
 
   create_table "phrases", force: :cascade do |t|
-    t.string "text"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "phrases", ["text"], name: "index_phrases_on_text", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "phrase_id"
-    t.string  "name"
-    t.string  "twitter_id"
+    t.integer  "phrase_id"
+    t.string   "name"
+    t.string   "twitter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "tasks", ["phrase_id"], name: "index_tasks_on_phrase_id", using: :btree
